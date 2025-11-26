@@ -12,9 +12,13 @@ class TaskController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $req)
     {
-        return TaskResource::collection(Task::all());
+        $tasks = Task::when($req->filter == 'completed', fn($qry) => $qry->where('is_completed', true))
+            ->when($req->filter == 'pending', fn($qry) => $qry->where('is_completed', false))
+            ->get();
+
+        return TaskResource::collection($tasks);
     }
 
     /**
