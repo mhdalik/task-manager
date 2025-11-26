@@ -1,0 +1,43 @@
+single-page Task Management feature that allows users to
+create, manage, and filter their daily tasks.
+
+TECH STACK
+- Laravel API Backend
+- Frontend blade with ajax styled with Bootstrap.
+
+Core Requirements:
+- tasks table
+ * title (String, required)
+ * description (Text, optional)
+ * is_completed (Boolean, default false)
+ * due_date (Timestamp, optional)
+- Seeder with at least 5 initial dummy tasks.
+2. API Development
+- CRUD API using a Laravel Resource Controller
+- api resourse routing (/api/tasks).
+- use TaskResource for all responses for consistent and well-structured JSON output
+
+- add filter option in (GET /api/tasks) api (optional query params)
+ * Dynamic Filtering: The (GET /api/tasks) must accept an optional filter query parameter. Use Eloquent's when() clause to implement the following logic:
+ * ?filter=completed: Return only tasks where is_completed is true.
+ * ?filter=pending: Return only tasks where is_completed is false.
+
+3. Frontend Implementation (Bootstrap & JavaScript)
+- frontend must in single view, communicate  via getch api or AJAX
+- layout should responsive and visually distinguishes completed tasks (e.g., using a strikethrough or
+different card color).
+
+ * Initial Load: Fetch and render all tasks dynamically when the page loads.
+ * Implement Task Creation form that sends an AJAX request to the API.
+ * The task list must update dynamically upon successful creation.
+ * add controls (buttons/checkboxes) on each task to Toggle its Completion Status (PATCH
+request) and Delete the task (DELETE request).
+ * The UI must update immediately and dynamically for these actions.
+ * Dynamic Filtering Controls: Implement buttons or a dropdown for the user to select and apply
+the "All," "Completed," or "Pending" filters. Selecting an option must trigger a new AJAX request
+with the correct filter query parameter and completely redraw the list.
+ * Feedback: Use a Bootstrap Toast or Alert component to give the user success or error feedback
+after any action (Create, Update, Delete).
+💡 Submission Guidelines
+ * Provide a GitHub repository link containing the full, runnable Laravel project.
+ - host on hostinger
