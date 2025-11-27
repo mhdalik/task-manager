@@ -28,9 +28,9 @@ class TaskController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title' => 'string|required|between:2,255',
-            'description' => 'string|max:999',
+            'description' => 'nullable|string|max:999',
             'is_completed' => 'boolean',
-            'due_date' => 'date',
+            'due_date' => 'nullable|date',
         ]);
 
         if ($validator->fails()) {
@@ -44,7 +44,7 @@ class TaskController extends Controller
 
         return response()->json([
             'status' => true,
-            'data' => $task,
+            'data' => $task->toResource(),
             'message' => 'Task created successfully'
         ]);
     }
@@ -64,9 +64,9 @@ class TaskController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title' => 'string|required|between:2,255',
-            'description' => 'string|max:999',
+            'description' => 'nullable|string|max:999',
             'is_completed' => 'boolean',
-            'due_date' => 'date|nullable',
+            'due_date' => 'nullable|date',
         ]);
 
         if ($validator->fails()) {
