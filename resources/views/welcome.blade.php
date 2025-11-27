@@ -219,7 +219,7 @@
                     <td>${task.id}</td>
                     <td>${task.title}</td>
                     <td>${task.description??''}</td>
-                    <td>${task.is_completed}</td>
+                    <td>${task.is_completed?'Completed':'Pending'}</td>
                     <td>${task.due_date??''}</td>
                     <td><div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
                         <button type="button" class="btn btn-outline-primary">✏️</button>
